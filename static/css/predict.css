@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f7f7f7;
+    padding: 20px;
+}
+h1, h3 {
+    margin: 20px 0;
+}
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.canvas-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 20px; /* Space between canvas and buttons */
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+.image-frame {
+    width: 240px;
+    height: 240px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+.pixel-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+.hidden {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+.visible {
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.crosslink {
+    color: #efefef;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+    font-size: 16pt;
+    font-family: Roboto, var(--default-font-family);
+    font-style: italic;
+  }
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+canvas {
+    border: 2px solid black;
+}
+
+.xgboost-container {
+    margin-top: 40px;
+    text-align: center;
+    background-color: black;
+    padding: 40px 20px;
+    color: white;
+}
+.xgboost-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.grayscale-box, .matrix-image, .-logo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 220px;
+}
+.grayscale-box .image-frame {
+    width: 100%;
+    height: auto;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.grayscale-box img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.matrix-image img, .xgboost-logo img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    border: 2px solid white;
+    background-color: white;
+}
+.arrow {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.arrow img {
+    width: 100%;
+    max-width: 40px;
+    height: auto;
+}
+h2, h3 {
+    margin-bottom: 10px;
+}
+
+.gif-container {
+    margin-top: 0; /* Removes the gap between sections */
+    text-align: center;
+    background-color: black;
+    padding: 0; /* Removes padding around the GIF */
+    color: white;
+}
+.gif-container h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.full-screen-gif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    overflow: hidden; /* Prevents any overflow */
+}
+.full-screen-gif img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures the GIF fills the container without distortion */
+}
