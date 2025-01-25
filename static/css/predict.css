@@ -70,6 +70,8 @@ h1, h3 {
     font-size: 16pt;
     font-family: Roboto, var(--default-font-family);
     font-style: italic;
+    padding-bottom: 15px;
+    text-decoration: underline;
   }
 
 button {
