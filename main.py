@@ -4,8 +4,15 @@ import os
 from PIL import Image, ImageOps
 import io
 import signal
+import sys
 import tensorflow as tf
 import joblib
+
+from utils.logging import logger
+from utils.logging import flush
+
+from types import FrameType
+
 
 # Load saved models
 cnn_model = tf.keras.models.load_model("cnn_feature_extractor_model.h5")
@@ -53,6 +60,16 @@ def predict():
 # if __name__ == "__main__":
 #     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
     
+def shutdown_handler(signal_int: int, frame: FrameType) -> None:
+    logger.info(f"Caught Signal {signal.strsignal(signal_int)}")
+
+    
+
+    flush()
+
+    # Safely exit program
+    sys.exit(0)
+
 if __name__ == "__main__":
     # Running application locally, outside of a Google Cloud Environment
 
