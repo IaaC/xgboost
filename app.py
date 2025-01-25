@@ -1,7 +1,9 @@
 from flask import Flask, request, render_template, jsonify
 import numpy as np
+import os
 from PIL import Image, ImageOps
 import io
+import signal
 import tensorflow as tf
 import joblib
 
@@ -48,7 +50,16 @@ def predict():
 
     return jsonify({'prediction': int(prediction)})
 
-if __name__ == '__main__':
+# if __name__ == "__main__":
+#     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
     
-    app.run(host="127.0.0.1", port=8080, debug=True)
-    
+if __name__ == "__main__":
+    # Running application locally, outside of a Google Cloud Environment
+
+    # handles Ctrl-C termination
+    signal.signal(signal.SIGINT, shutdown_handler)
+
+    app.run(host="localhost", port=8080, debug=True)
+else:
+    # handles Cloud Run container termination
+    signal.signal(signal.SIGTERM, shutdown_handler)

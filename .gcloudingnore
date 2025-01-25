@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+#     https://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,16 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-runtime: python39
+# The .gcloudignore file excludes file from upload to Cloud Build.
+# If this file is deleted, gcloud will default to .gitignore.
+#
+# https://cloud.google.com/cloud-build/docs/speeding-up-builds#gcloudignore
+# https://cloud.google.com/sdk/gcloud/reference/topic/gcloudignore
 
-handlers:
-  # This configures Google App Engine to serve the files in the app's static
-  # directory.
-- url: /static
-  static_dir: static
+# Ignore everything specified in .gitignore
+#!include:.gitignore
 
-  # This handler routes all requests not caught above to your main app. It is
-  # required when static routes are defined, but can be omitted (along with
-  # the entire handlers section) when there are no static files defined.
-- url: /.*
-  script: auto
+# Exclude locally installed dependencies
+venv/
+
+# Exclude git history and configuration.
+.git/
+.gitignore
